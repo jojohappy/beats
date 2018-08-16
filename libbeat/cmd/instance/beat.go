@@ -46,6 +46,7 @@ import (
 	_ "github.com/elastic/beats/libbeat/processors/add_cloud_metadata"
 	_ "github.com/elastic/beats/libbeat/processors/add_docker_metadata"
 	_ "github.com/elastic/beats/libbeat/processors/add_kubernetes_metadata"
+	_ "github.com/elastic/beats/libbeat/processors/add_kubernetes_metadata_mengguang"
 	_ "github.com/elastic/beats/libbeat/processors/add_locale"
 
 	// Register autodiscover providers

@@ -1,16 +1,9 @@
-FROM golang:1.9.2
-MAINTAINER Nicolas Ruflin <ruflin@elastic.co>
+FROM docker.elastic.co/beats/filebeat:6.2.4
+MAINTAINER Michael Dai <jdai1@xiaohongshu.com>
 
-RUN set -x && \
-    apt-get update && \
-    apt-get install -y --no-install-recommends \
-         netcat python-pip virtualenv && \
-    apt-get clean
+USER root
+COPY filebeat /usr/share/filebeat
 
-RUN pip install --upgrade setuptools
-
-# Setup work environment
-ENV FILEBEAT_PATH /go/src/github.com/elastic/beats/filebeat
-
-RUN mkdir -p $FILEBEAT_PATH/build/coverage
-WORKDIR $FILEBEAT_PATH
+RUN chmod 0750 /usr/share/filebeat/filebeat && \
+    chown root:filebeat /usr/share/filebeat/filebeat
+USER filebeat
